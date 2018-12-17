@@ -1,5 +1,6 @@
-import React,{PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import * as projectActions from '../../actions/projectActions';
 
 class ProjectsPage extends React.Component {
@@ -11,17 +12,16 @@ class ProjectsPage extends React.Component {
     this.onTitleChange=this.onTitleChange.bind(this);
     this.onClickSave=this.onClickSave.bind(this);
   }
+  //Create our OnTitleChange functio
+   onTitleChange(event) {
+     const project = this.state.project;
+     project.title = event.target.value;
+     this.setState({project: project});
+   }
   onClickSave() {
-    this.props.dispatch(projectActions.createProject(this.state.project))
+    this.props.actions.createProject(this.state.project)
   }
- //Create our OnTitleChange functio
-  onTitleChange(event) {
-    const project = this.state.project;
-    project.title = event.target.value;
-    this.setState({
-      project: project
-    });
-  }
+
  projectRow(project,index) {
    return <div key={index}>{project.title}</div>;
  }
@@ -29,10 +29,11 @@ class ProjectsPage extends React.Component {
 
   //add form here
    render() {
+
      return(
        <div>
         <h1>Projects</h1>
-        {this.props.project.map(this.projectRow)}
+        {this.props.projects.map(this.projectRow)}
         <h2>Add Project:</h2>
         <input
           type="text"
@@ -47,13 +48,26 @@ class ProjectsPage extends React.Component {
      );
    }
 }
+
+ProjectsPage.propTypes = {
+
+  projects: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
+};
+
+
 function mapStateToProps(state, ownProps) {
   return {
     projects: state.projects
   };
-
 }
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(projectActions, dispatch)
+  };
+}
+
 
 //const connectedStateAndProps = connect(mapStateToProps, mapDispatchToProp);
 //export default connectedStateAndProps(ProjectsPage);
-export default connect(mapStateToProps)(ProjectsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectsPage);
