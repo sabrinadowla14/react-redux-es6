@@ -5,10 +5,12 @@ import configureStore from './store/configureStore.dev';
 import {Provider} from 'react-redux';
 import {Router, browserHistory} from 'react-router';
 import routes from './routes';
+import {loadProjects} from './actions/projectActions';
 import './styles/styles.css'; //Webpack can import css files too
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 //create an instance of createStore
 const store = configureStore();
+store.dispatch(loadProjects());
 render(
   <Provider store = {store}>
   <Router history={browserHistory} routes={routes} />
