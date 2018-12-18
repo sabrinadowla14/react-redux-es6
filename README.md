@@ -22,7 +22,7 @@ Added script to the given package.json file
   
 ##Set up ESLint to catch mistakes
 
-## go to terminal and type - npm run lint
+go to terminal and type - npm run lint
 
 For Development:
 To Run: 
