@@ -1,3 +1,4 @@
+/*eslint-disable import/default */
 import 'babel-polyfill';
 import React from 'react';
 import {render} from 'react-dom';
@@ -9,6 +10,7 @@ import {loadProjects} from './actions/projectActions';
 import {loadUsers} from './actions/userActions';
 import './styles/styles.css'; //Webpack can import css files too
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/toastr/build/toastr.min.css';
 //create an instance of createStore
 const store = configureStore();
 store.dispatch(loadProjects());

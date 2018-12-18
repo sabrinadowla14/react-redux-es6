@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import projectApi from '../api/mockProjectApi';
+import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
 export function loadProjectsSuccess(projects) {
   return { type: types.LOAD_PROJECTS_SUCCESS, projects};
@@ -15,7 +16,7 @@ export function updateProjectSuccess(project) {
 
 export function loadProjects() {
   return function(dispatch) {
-
+   dispatch(beginAjaxCall());
     return projectApi.getAllProjects().then(projects => {
       dispatch(loadProjectsSuccess(projects));
     }).catch(error => {
@@ -26,11 +27,12 @@ export function loadProjects() {
 
 export function saveProject(project) {
   return function (dispatch, getState) {
-    //dispatch(beginAjaxCall());
+    dispatch(beginAjaxCall());
     return projectApi.saveProject(project).then(project => {
       project.id ? dispatch(updateProjectSuccess(project)) :
         dispatch(createProjectSuccess(project));
     }).catch(error => {
+      dispatch(ajaxCallError(error));
       throw(error);
     });
   };

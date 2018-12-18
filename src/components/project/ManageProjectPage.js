@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as projectActions from '../../actions/projectActions';
 import ProjectForm from './ProjectForm';
+import toastr from 'toastr';
 
 
 export class ManageProjectPage extends React.Component {
@@ -37,16 +38,25 @@ export class ManageProjectPage extends React.Component {
 
   saveProject(event) {
     event.preventDefault();
-    this.props.actions.saveProject(this.state.project);
-    this.context.router.push('/projects');
+  /*  if (!this.projectFormIsValid()) {
+      return;
+    }*/
+
+    this.setState({saving: true});
+    this.props.actions.saveProject(this.state.project)
+      .then(() => this.redirect())
+      .catch(error => {
+        toastr.error(error);
+        this.setState({saving: false});
+      });
 
   }
 
-/*  redirect() {
+  redirect() {
     this.setState({saving: false});
     toastr.success('Project saved');
     this.context.router.push('/projects');
-  }*/
+  }
 
   render() {
     return (
@@ -58,7 +68,7 @@ export class ManageProjectPage extends React.Component {
         onSave={this.saveProject}
         project={this.state.project}
         errors={this.state.errors}
-    //    saving={this.state.saving}
+        saving={this.state.saving}
 
     />
 

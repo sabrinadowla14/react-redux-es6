@@ -7,7 +7,7 @@ import ProjectsPage from './components/project/ProjectsPage';
 import ManageProjectPage from './components/project/ManageProjectPage'; //eslint-disable-line import/no-named-as-default
 
 export default(
- <Route path='/' component={App}>
+ <Route path="/" component={App}>
      <IndexRoute component={HomePage} />
      <Route path="projects" component={ProjectsPage} />
      <Route path="project" component={ManageProjectPage} />
