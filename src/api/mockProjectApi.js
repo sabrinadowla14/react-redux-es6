@@ -6,7 +6,7 @@ import delay from './delay';
 const projects = [
   {
     id: "Build-an-Item-Catalog-Application",
-    title: "Build-an-Item-Catalog-Application",
+    title: "Build an Item Catalog Application",
     watchHref: "https://github.com/sabrinadowla14/Build-an-Item-Catalog-Application",
     userId: "sabrina-dowla",
     length: "6:20",
@@ -16,7 +16,7 @@ const projects = [
     id: "react-redux-es6",
     title: "react-redux-es6",
     watchHref: "https://github.com/sabrinadowla14/react-redux-es6",
-    authorId: "sabrina-dowla",
+    userId: "sabrina-dowla",
     length: "5:08",
     category: "JavaScript"
   },
@@ -24,7 +24,7 @@ const projects = [
     id: "buildPortfolioProject",
     title: "buildPortfolioProject",
     watchHref: "https://github.com/sabrinadowla14/buildPortfolioProject",
-    authorId: "sabrina-dowla",
+    userId: "sabrina-dowla",
     length: "3:10",
     category: "HTML5"
   },
@@ -32,7 +32,7 @@ const projects = [
     id: "ResumeWebsiteUsingAngular2",
     title: "ResumeWebsiteUsingAngular2",
     watchHref: "https://github.com/sabrinadowla14/ResumeWebsiteUsingAngular2",
-    authorId: "sabrina-dowla",
+    userId: "sabrina-dowla",
     length: "2:52",
     category: "Angular2"
   },
@@ -40,7 +40,7 @@ const projects = [
     id: "Final_Database_Tournament",
     title: "Final_Database_Tournament",
     watchHref: "https://github.com/sabrinadowla14/Final_Database_Tournament",
-    authorId: "sabrina-dowla",
+    userId: "sabrina-dowla",
     length: "2:30",
     category: "PostgreSQL"
   },
@@ -48,7 +48,7 @@ const projects = [
     id: "Multi_User_Blog",
     title: "Multi_User_Blog",
     watchHref: "https://github.com/sabrinadowla14/Multi_User_Blog",
-    authorId: "sabrina-dowla",
+    userId: "sabrina-dowla",
     length: "5:10",
     category: " Jinja"
   }
@@ -90,9 +90,7 @@ class ProjectApi {
           //The server would generate ids and watchHref's for new courses in a real app.
           //Cloning so copy returned is passed by value rather than by reference.
           project.id = generateId(project);
-          project.watchHref = `https://github.com/sabrinadowla14
-          length: "2:30",
-/${project.id}`;
+          project.watchHref = `https://github.com/sabrinadowla14/${project.id}`;
           projects.push(project);
         }
 

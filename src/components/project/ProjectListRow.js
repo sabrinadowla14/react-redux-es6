@@ -5,7 +5,7 @@ const ProjectListRow = ({project}) => {
   return (
     <tr>
       <td><a href={project.watchHref} target="_blank">Watch</a></td>
-      <td><Link to={'/sabrinadowla14/' + project.id}>{project.title}</Link></td>
+      <td><Link to={'/project/' + project.id}>{project.title}</Link></td>
       <td>{project.userId}</td>
       <td>{project.category}</td>
       <td>{project.length}</td>
