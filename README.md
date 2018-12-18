@@ -1,6 +1,8 @@
 # react-redux-es6
 Contents are taken from Plural sight "Building Application with React and Redux in ES6" By Cory House.
+
 Package.Json file is taken from https://github.com/coryhouse/pluralsight-redux-starter
+
 Added script to the given package.json file
 "scripts": {
     "prestart": "babel-node tools/startMessage.js",
@@ -17,8 +19,11 @@ Added script to the given package.json file
     "build": "babel-node tools/build.js",
     "postbuild": "babel-node tools/distServer.js"
   },
+  
 ##Set up ESLint to catch mistakes
+
 ## go to terminal and type - npm run lint
+
 For Development:
 To Run: 
 npm install
